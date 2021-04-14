@@ -1,0 +1,8 @@
+spring:
+  profiles:
+  application:
+    name: SPRINGCLOUD-ADMIN
+  security:
+    user:
+      name: admin
+      password: You_Password
