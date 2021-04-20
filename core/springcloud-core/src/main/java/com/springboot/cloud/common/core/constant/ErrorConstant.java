@@ -7,8 +7,11 @@ package com.springboot.cloud.common.core.constant;
 
 public enum ErrorConstant {
     //
-    SYSTEM_ERROR("-1","系统错误");
+    SYSTEM_ERROR("-1","系统错误"),
 
+    FAILED_TO_FIND_ROUTES("A0001","没有找到路由"),
+    ILLEGAL_ROUTE_COMMAND_PARAM("A0002","路由命令参数非法"),
+    FAILED_TO_FIND_ROUTE_INFO ("A0003","加载路由信息失败");
     String code;
     String message;
 

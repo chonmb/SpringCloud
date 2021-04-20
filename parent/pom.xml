@@ -34,6 +34,7 @@
         <nacos.config.version>2.1.0.RELEASE</nacos.config.version>
         <nacos.discovery.version>0.9.0.RELEASE</nacos.discovery.version>
         <zipkin.version>2.12.0</zipkin.version>
+        <rabbitmq.version>5.9.0</rabbitmq.version>
     </properties>
 
     <dependencyManagement>
@@ -171,6 +172,7 @@
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${nacos.discovery.version}</version>
             </dependency>
+            <!--链路追踪-->
             <dependency>
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-server</artifactId>
@@ -180,6 +182,12 @@
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-autoconfigure-ui</artifactId>
                 <version>${zipkin.version}</version>
+            </dependency>
+            <!--消息队列-->
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>${rabbitmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
