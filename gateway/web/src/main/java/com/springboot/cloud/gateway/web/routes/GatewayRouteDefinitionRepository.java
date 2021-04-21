@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/20 10:39
  */
 @Component

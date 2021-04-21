@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/20 15:15
  */
 @Configuration

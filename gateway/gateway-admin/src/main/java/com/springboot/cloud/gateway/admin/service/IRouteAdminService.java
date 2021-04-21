@@ -1,7 +1,7 @@
 package com.springboot.cloud.gateway.admin.service;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/21 11:05
  */
 

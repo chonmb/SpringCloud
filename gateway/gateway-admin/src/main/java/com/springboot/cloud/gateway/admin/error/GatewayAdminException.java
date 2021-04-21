@@ -4,7 +4,7 @@ import com.springboot.cloud.common.core.constant.ErrorConstant;
 import com.springboot.cloud.common.core.error.SpringCloudBasicException;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/21 9:13
  */
 

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  * 路由聚合
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/20 13:12
  */
 @Component

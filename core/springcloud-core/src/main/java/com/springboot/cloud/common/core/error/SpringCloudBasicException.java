@@ -3,7 +3,7 @@ package com.springboot.cloud.common.core.error;
 import com.springboot.cloud.common.core.constant.ErrorConstant;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/13 16:21
  */
 

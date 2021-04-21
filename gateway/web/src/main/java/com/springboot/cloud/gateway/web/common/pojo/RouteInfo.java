@@ -3,7 +3,7 @@ package com.springboot.cloud.gateway.web.common.pojo;
 import lombok.Data;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/20 15:56
  */
 @Data

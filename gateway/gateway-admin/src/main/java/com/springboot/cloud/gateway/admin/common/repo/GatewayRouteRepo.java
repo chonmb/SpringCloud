@@ -4,7 +4,7 @@ import com.springboot.cloud.gateway.admin.models.entities.GatewayRoute;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * @author chonmb Email:jiangxin2@shanghai-electric.com
+ * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/21 11:12
  */
 
