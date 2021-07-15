@@ -2,6 +2,8 @@ package com.springboot.cloud.common.core.utils;
 
 import com.springboot.cloud.common.core.constant.ErrorConstant;
 import com.springboot.cloud.common.core.error.BaseSpringCloudException;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.time.ZonedDateTime;
@@ -10,7 +12,8 @@ import java.time.ZonedDateTime;
  * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/13 17:13
  */
-
+@Getter
+@Setter
 public class Result<T> {
     public static final String SUCCESSFUL_CODE = "200";
     public static final String SUCCESSFUL_MESSAGE = "处理成功";
@@ -52,6 +55,10 @@ public class Result<T> {
 
     public static Result<Object> fail() {
         return new Result<>(ErrorConstant.SYSTEM_ERROR);
+    }
+
+    public static Result<Object> requestFail(){
+        return new Result<>(ErrorConstant.FAILED_GET_RESPONSE);
     }
 
     public static Result<Object> fail(BaseSpringCloudException springCloudBasicException, Object data) {
