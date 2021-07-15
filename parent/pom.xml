@@ -10,6 +10,7 @@
     <modules>
         <module>../monitor</module>
         <module>../gateway</module>
+        <module>../utils</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -23,7 +24,7 @@
         <spring-boot.admin.version>2.3.1</spring-boot.admin.version>
         <sentinel.version>0.9.0.RELEASE</sentinel.version>
         <swagger.version>3.0.0</swagger.version>
-        <redis.version>2.1.10.RELEASE</redis.version>
+        <redis.version>2.3.4.RELEASE</redis.version>
         <forest.version>1.5.0-RC1</forest.version>
         <mysql.version>8.0.20</mysql.version>
         <netty.version>4.1.10.Final</netty.version>
@@ -32,7 +33,7 @@
         <mapstruct.version>1.2.0.Final</mapstruct.version>
         <lombok.version>1.18.12</lombok.version>
         <nacos.config.version>2.1.0.RELEASE</nacos.config.version>
-        <nacos.discovery.version>0.9.0.RELEASE</nacos.discovery.version>
+        <nacos.discovery.version>2.1.0.RELEASE</nacos.discovery.version>
         <zipkin.version>2.12.0</zipkin.version>
         <rabbitmq.version>5.9.0</rabbitmq.version>
     </properties>
@@ -168,8 +169,8 @@
             </dependency>
             <!--nacos服务发现-->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
                 <version>${nacos.discovery.version}</version>
             </dependency>
             <!--链路追踪-->
@@ -188,6 +189,12 @@
                 <groupId>com.rabbitmq</groupId>
                 <artifactId>amqp-client</artifactId>
                 <version>${rabbitmq.version}</version>
+            </dependency>
+<!--            spring AOP-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
