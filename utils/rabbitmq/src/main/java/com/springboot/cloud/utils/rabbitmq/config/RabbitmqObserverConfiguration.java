@@ -1,5 +1,6 @@
 package com.springboot.cloud.utils.rabbitmq.config;
 
+import com.springboot.cloud.utils.rabbitmq.context.RabbitmqContextAware;
 import com.springboot.cloud.utils.rabbitmq.handler.HandlerManager;
 import com.springboot.cloud.utils.rabbitmq.observer.BaseObserver;
 import org.springframework.beans.BeansException;
@@ -26,5 +27,6 @@ public class RabbitmqObserverConfiguration implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         Map<String, BaseObserver> observers = applicationContext.getBeansOfType(BaseObserver.class);
         observers.forEach((key, value) -> handlerManager.registerObserver(value));
+        applicationContext.getBeansOfType(RabbitmqContextAware.class).forEach((s, rabbitmqContextAware) -> rabbitmqContextAware.afterObserversRegistered());
     }
 }
