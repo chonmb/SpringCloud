@@ -1,7 +1,7 @@
 package com.springboot.cloud.common.core.utils;
 
 import com.springboot.cloud.common.core.constant.ErrorConstant;
-import com.springboot.cloud.common.core.error.SpringCloudBasicException;
+import com.springboot.cloud.common.core.error.BaseSpringCloudException;
 
 import java.time.Instant;
 import java.time.ZonedDateTime;
@@ -54,11 +54,11 @@ public class Result<T> {
         return new Result<>(ErrorConstant.SYSTEM_ERROR);
     }
 
-    public static Result<Object> fail(SpringCloudBasicException springCloudBasicException, Object data) {
+    public static Result<Object> fail(BaseSpringCloudException springCloudBasicException, Object data) {
         return new Result<>(springCloudBasicException.getCode(), springCloudBasicException.getMessage(), data);
     }
 
-    public static Result<Object> fail(SpringCloudBasicException springCloudBasicException) {
+    public static Result<Object> fail(BaseSpringCloudException springCloudBasicException) {
         return fail(springCloudBasicException, null);
     }
 

@@ -1,18 +1,23 @@
 package com.springboot.cloud.gateway.web.events;
 
+import com.springboot.cloud.common.core.constant.CommonConstant;
 import com.springboot.cloud.gateway.web.common.factory.RouteCommandFactory;
-import com.springboot.cloud.gateway.web.common.pojo.RouteCommand;
+import com.springboot.cloud.gateway.web.models.pojo.RouteCommand;
 import com.springboot.cloud.gateway.web.service.IRouteService;
+import com.springboot.cloud.utils.rabbitmq.observer.BasePublicMessageObserver;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.stereotype.Component;
 
 /**
  * @author chonmb Email:weichonmb@foxmail.com
  * @date 2021/4/20 12:53
  */
-
-public class RouteOperationEvent implements ApplicationEventPublisherAware {
+@Component
+@Slf4j
+public class RouteOperationEvent extends BasePublicMessageObserver implements ApplicationEventPublisherAware {
     private ApplicationEventPublisher publisher;
     private final IRouteService routeService;
     private final RouteCommandFactory routeCommandFactory;
@@ -51,5 +56,15 @@ public class RouteOperationEvent implements ApplicationEventPublisherAware {
 
     private void commit() {
         this.publisher.publishEvent(new RefreshRoutesEvent(this));
+    }
+
+    @Override
+    public void execute(String message) {
+        executeCommand(message);
+    }
+
+    @Override
+    public String getChannelName() {
+        return CommonConstant.GATEWAY_RABBITMQ_NAME;
     }
 }

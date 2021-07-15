@@ -24,4 +24,9 @@ public class RouteAdminController {
         routeAdminService.overloadRoutes();
         return Result.success();
     }
+
+    @GetMapping("/")
+    public Result getRoutes(){
+        return Result.success();
+    }
 }

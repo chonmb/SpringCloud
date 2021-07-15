@@ -6,5 +6,8 @@ package com.springboot.cloud.gateway.admin.service;
  */
 
 public interface IRouteAdminService {
+    /**
+     * 路由重载
+     */
     void overloadRoutes();
 }

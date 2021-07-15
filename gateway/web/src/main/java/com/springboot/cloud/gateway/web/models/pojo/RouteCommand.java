@@ -1,4 +1,4 @@
-package com.springboot.cloud.gateway.web.common.pojo;
+package com.springboot.cloud.gateway.web.models.pojo;
 
 import com.springboot.cloud.common.core.constant.RouteOperationConstant;
 import lombok.Getter;

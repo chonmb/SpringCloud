@@ -1,14 +1,15 @@
 package com.springboot.cloud.gateway.admin.service.impl;
 
 import com.springboot.cloud.common.core.constant.RouteOperationConstant;
+import com.springboot.cloud.common.core.models.RouteInfo;
 import com.springboot.cloud.gateway.admin.common.mapper.RouteConverter;
 import com.springboot.cloud.gateway.admin.common.repo.GatewayRouteRepo;
 import com.springboot.cloud.gateway.admin.events.GatewayAdminEvent;
-import com.springboot.cloud.gateway.admin.models.entities.GatewayRoute;
-import com.springboot.cloud.gateway.admin.models.pojo.RouteInfo;
 import com.springboot.cloud.gateway.admin.service.IRouteAdminService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
  * @date 2021/4/21 11:08
  */
 @Service
+@Slf4j
 public class RouteAdminServiceImpl implements IRouteAdminService {
     private final GatewayAdminEvent gatewayAdminEvent;
     private final GatewayRouteRepo gatewayRouteRepo;
@@ -29,12 +31,14 @@ public class RouteAdminServiceImpl implements IRouteAdminService {
     }
 
     @Override
+    @PostConstruct
     public void overloadRoutes() {
         List<RouteInfo> gatewayRoutes = routeConverter.toRouteInfo(gatewayRouteRepo.findAll());
-        gatewayAdminEvent.sendRouteCommand(
+        String command = gatewayAdminEvent.sendRouteCommand(
                 RouteOperationConstant.OVERLOAD,
                 gatewayRoutes.stream().map(RouteInfo::getName).collect(Collectors.joining(",")),
                 gatewayRoutes
         );
+        log.info("command - {} - already send", command);
     }
 }

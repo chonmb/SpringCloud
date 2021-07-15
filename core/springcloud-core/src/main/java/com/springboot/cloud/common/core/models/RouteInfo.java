@@ -1,4 +1,4 @@
-package com.springboot.cloud.gateway.admin.models.pojo;
+package com.springboot.cloud.common.core.models;
 
 import lombok.Data;
 

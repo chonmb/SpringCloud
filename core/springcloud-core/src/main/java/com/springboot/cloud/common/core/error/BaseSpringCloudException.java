@@ -7,29 +7,29 @@ import com.springboot.cloud.common.core.constant.ErrorConstant;
  * @date 2021/4/13 16:21
  */
 
-public abstract class SpringCloudBasicException extends RuntimeException {
+public abstract class BaseSpringCloudException extends RuntimeException {
     private String code;
 
-    public SpringCloudBasicException(String message) {
+    public BaseSpringCloudException(String message) {
         super(message);
     }
 
-    public SpringCloudBasicException(String message, Throwable cause, String code) {
+    public BaseSpringCloudException(String message, Throwable cause, String code) {
         super(message, cause);
         this.code = code;
     }
 
-    public SpringCloudBasicException(String message, String code) {
+    public BaseSpringCloudException(String message, String code) {
         super(message);
         this.code = code;
     }
 
-    public SpringCloudBasicException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String code) {
+    public BaseSpringCloudException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String code) {
         super(message, cause, enableSuppression, writableStackTrace);
         this.code = code;
     }
 
-    public SpringCloudBasicException(ErrorConstant errorConstant){
+    public BaseSpringCloudException(ErrorConstant errorConstant){
         super(errorConstant.getMessage());
         this.code=errorConstant.getCode();
     }
