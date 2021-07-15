@@ -3,6 +3,7 @@ package com.springboot.cloud.gateway;
 import com.springboot.cloud.utils.rabbitmq.annotation.EnableSpringCloudRabbitmq;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author chonmb Email:weichonmb@foxmail.com
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableSpringCloudRabbitmq
+@EnableDiscoveryClient
 public class GatewayAdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayAdminApplication.class, args);

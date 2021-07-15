@@ -1,6 +1,6 @@
 spring:
   application:
-    name: GATEWAY-WEB
+    name: gateway-web
   cloud:
     nacos:
       config:
