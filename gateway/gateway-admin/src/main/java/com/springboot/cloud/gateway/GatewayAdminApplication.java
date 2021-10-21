@@ -11,7 +11,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 
 @SpringBootApplication
-@EnableSpringCloudRabbitmq
 @EnableDiscoveryClient
 public class GatewayAdminApplication {
     public static void main(String[] args) {

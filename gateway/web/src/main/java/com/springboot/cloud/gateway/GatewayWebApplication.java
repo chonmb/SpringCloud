@@ -11,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @date 2021/4/20 8:49
  */
 @SpringBootApplication
-@EnableSpringCloudRabbitmq
 @EnableFeignClients
 @EnableDiscoveryClient
 public class GatewayWebApplication {
