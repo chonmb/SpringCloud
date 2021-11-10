@@ -1,6 +1,7 @@
 package com.springboot.cloud.utils.rabbitmq.handler.impl;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.rabbitmq.client.Channel;
 import com.springboot.cloud.utils.rabbitmq.common.ChannelType;
 import com.springboot.cloud.utils.rabbitmq.factory.ChannelFactory;
 import com.springboot.cloud.utils.rabbitmq.handler.HandlerManager;
@@ -8,9 +9,12 @@ import com.springboot.cloud.utils.rabbitmq.handler.RecvMessageHandler;
 import com.springboot.cloud.utils.rabbitmq.handler.SendMessageHandler;
 import com.springboot.cloud.utils.rabbitmq.observer.BaseObserver;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.*;
 
 /**
@@ -20,7 +24,7 @@ import java.util.concurrent.*;
  */
 @Component
 @Slf4j
-public class HandlerManagerImpl implements HandlerManager {
+public class HandlerManagerImpl implements HandlerManager, ApplicationListener<ContextClosedEvent> {
     private final ChannelFactory channelFactory;
     private final Map<String, SendMessageHandler> sendMessageHandlerMap;
     private ThreadPoolExecutor sendPool;
@@ -46,7 +50,7 @@ public class HandlerManagerImpl implements HandlerManager {
             sendMessageHandlerMap.get(channel).send(message);
             sendPool.execute(sendMessageHandlerMap.get(channel));
         } else {
-            log.error("channel not found");
+            log.error("channel - {} not found", channel);
         }
     }
 
@@ -64,7 +68,7 @@ public class HandlerManagerImpl implements HandlerManager {
                     break;
             }
         } else {
-            log.debug("channel already build");
+            log.debug("channel - {} already build", channel);
         }
     }
 
@@ -89,8 +93,25 @@ public class HandlerManagerImpl implements HandlerManager {
                     break;
             }
         } else {
-            log.debug("channel already build");
+            log.debug("channel - {} already build", channel);
         }
+    }
+
+    @Override
+    public Channel getSendChannel(String channel) {
+        Optional<SendMessageHandler> msgHandler = Optional.ofNullable(sendMessageHandlerMap.get(channel));
+        return msgHandler.map(SendMessageHandler::getChannel).orElse(null);
+    }
+
+    @Override
+    public Channel getRecvChannel(String channel) {
+        Optional<RecvMessageHandler> msgHandler = Optional.ofNullable(recvMessageHandlerMap.get(channel));
+        return msgHandler.map(RecvMessageHandler::getChannel).orElse(null);
+    }
+
+    @Override
+    public Optional<Channel> getChannel(String channel) {
+        return channelFactory.getChannel(channel);
     }
 
     @Override
@@ -100,9 +121,21 @@ public class HandlerManagerImpl implements HandlerManager {
 
     @Override
     public void registerObserver(BaseObserver observer) {
-        if (!isRecvChannelExist(observer.getChannelName())){
+        if (!isRecvChannelExist(observer.getChannelName())) {
             buildRecvChannel(observer.getChannelName(), observer.getChannelType());
         }
         recvMessageHandlerMap.get(observer.getChannelName()).addObserver(observer);
+    }
+
+    @Override
+    public void onApplicationEvent(ContextClosedEvent contextClosedEvent) {
+        shutdownGenerally();
+    }
+
+    public void shutdownGenerally() {
+        sendPool.shutdown();
+        recvBoss.shutdown();
+        recvMessageHandlerMap.values().forEach(RecvMessageHandler::shutdown);
+        channelFactory.destroy();
     }
 }

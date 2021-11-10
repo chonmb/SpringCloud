@@ -23,7 +23,7 @@ public class ChannelFactory {
     private final ConnectionFactory connectionFactory;
     private final RabbitmqProperties rabbitmqProperties;
     private Connection connection;
-    private Map<String, Channel> channelMap;
+    private final Map<String, Channel> channelMap;
 
     public ChannelFactory(RabbitmqProperties rabbitmqProperties) {
         this.rabbitmqProperties = rabbitmqProperties;
@@ -61,7 +61,7 @@ public class ChannelFactory {
     }
 
     @SneakyThrows
-    private void destroy() {
+    public void destroy() {
         for (Channel channel : channelMap.values()) {
             channel.close();
         }

@@ -1,7 +1,10 @@
 package com.springboot.cloud.utils.rabbitmq.handler;
 
+import com.rabbitmq.client.Channel;
 import com.springboot.cloud.utils.rabbitmq.common.ChannelType;
 import com.springboot.cloud.utils.rabbitmq.observer.BaseObserver;
+
+import java.util.Optional;
 
 /**
  * @author chonmb
@@ -18,7 +21,7 @@ public interface HandlerManager {
     public void send(String channel, String message);
 
     /**
-     * 构建发送channel
+     * 构建发送channel(channel 不能重名）
      *
      * @param channel channel标签
      * @param type    channel类型
@@ -40,6 +43,27 @@ public interface HandlerManager {
      * @param type    channel类型
      */
     public void buildRecvChannel(String channel, ChannelType type);
+
+    /**
+     * 获取发送channel
+     * @param channel channel标签
+     * @return channel对象
+     */
+    public Channel getSendChannel(String channel);
+
+    /**
+     * 获取监听channel
+     * @param channel channel标签
+     * @return channel对象
+     */
+    public Channel getRecvChannel(String channel);
+
+    /**
+     * 获取channel
+     * @param channel channel标签
+     * @return channel对象
+     */
+    public Optional<Channel> getChannel(String channel);
 
     /**
      * 检测channel是否存在

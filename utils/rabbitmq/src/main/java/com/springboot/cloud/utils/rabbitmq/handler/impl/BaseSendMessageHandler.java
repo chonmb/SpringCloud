@@ -71,4 +71,8 @@ public abstract class BaseSendMessageHandler {
     public ChannelFactory getChannelFactory() {
         return channelFactory;
     }
+
+    public Channel getChannel() {
+        return channel;
+    }
 }

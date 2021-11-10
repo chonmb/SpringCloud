@@ -57,4 +57,11 @@ public abstract class BaseRecvMessageHandler {
         });
     }
 
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void shutdown(){
+        works.shutdown();
+    }
 }

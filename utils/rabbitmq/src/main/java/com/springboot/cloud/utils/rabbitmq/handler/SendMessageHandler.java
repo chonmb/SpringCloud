@@ -1,5 +1,7 @@
 package com.springboot.cloud.utils.rabbitmq.handler;
 
+import com.rabbitmq.client.Channel;
+
 /**
  * @author chonmb
  * @email weichonmb@foxmail.com
@@ -22,4 +24,10 @@ public interface SendMessageHandler extends Runnable {
      * @param message
      */
     public void sendAndFlush(String message);
+
+    /**
+     * 获取channel
+     * @return channel对象
+     */
+    public Channel getChannel();
 }
