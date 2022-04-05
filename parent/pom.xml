@@ -21,7 +21,7 @@
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-compile-plugin.version>3.8.1</maven-compile-plugin.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <spring-boot.admin.version>2.3.1</spring-boot.admin.version>
         <sentinel.version>0.9.0.RELEASE</sentinel.version>
         <swagger.version>3.0.0</swagger.version>
