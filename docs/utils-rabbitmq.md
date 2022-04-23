@@ -1,6 +1,6 @@
-##spring cloud项目组件——rabbitmq
+## spring cloud项目组件——rabbitmq
 
-###RabbitMQ简介
+### RabbitMQ简介
 AMQP，即Advanced Message Queuing Protocol，高级消息队列协议，
 是应用层协议的一个开放标准，为面向消息的中间件设计。
 消息中间件主要用于组件之间的解耦，消息的发送者无需知道消息使用者的存在，反之亦然。
@@ -9,13 +9,13 @@ RabbitMQ是一个开源的AMQP实现，服务器端用Erlang语言编写，支�
 如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX。
 用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。
 
-###rabbitmq组件功能
+### rabbitmq组件功能
 使用RabbitMQ作为服务的中间件进行开发前，不可避免的需要了解ConnectionFactory,Connection,Channel,Exchange,Queue等
 相关对象的功能和定义进行学习，同时在开发过程中需要注意对一些对象的状态进行记录维护。
 rabbitmq组件在RabbitMQ提供的API基础上做了一层封装，完成对RabbitMQ一些对象的生命周期进行维护，
 开发者只需要简单的一些配置操作就可以完成对RabbitMQ的使用，减少RabbitMQ的开发使用成本。
 
-###rabbitmq组件的使用
+### rabbitmq组件的使用
 + rabbitmq的配置  
 开发者需要在配置清单中对rabbitmq的基本信息进行配置  
 
